@@ -8,7 +8,7 @@ class App extends React.Component {
 
   onSearchSubmit = async term => {
     //async/await pattern to deal with executing code when network request has completed
-    console.log("App.js Here: " + term);
+    //    console.log("App.js Here: " + term);
 
     const response = await unsplash.get("/search/photos", {
       //<<now ref'ing unsplash.get
@@ -17,13 +17,15 @@ class App extends React.Component {
     });
 
     this.setState({ images: response.data.results }); //subsequent code called to set state
+    console.log("Results = " + response.data.results);
   };
 
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        <ImageList />
+        Found : {this.state.images.length} images
+        <ImageList images={this.state.images} />
       </div>
     );
   }

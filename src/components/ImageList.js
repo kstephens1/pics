@@ -1,10 +1,14 @@
 import React from "react";
 
 const ImageList = props => {
-  console.log("K=" + props.images);
+  //console.log("Count = " + props.images);
+  const images = props.images.map(image => {
+    return <img src="" />;
 
-  console.log("Count = " + props.images);
-  return <div>ImageList</div>;
+    //    return <img src={images.urls.regular} />;
+  });
+
+  return <div>{images}</div>;
 };
 
 export default ImageList;
